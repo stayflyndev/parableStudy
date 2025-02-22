@@ -29,9 +29,12 @@ const ParableList = () => {
     const fetchParables = async () => {
       try {
         // Fetch both parables & topics at the same time
+
+        const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
         const [parableRes, topicRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/parable-verses"), // Correct endpoint
-          axios.get("http://localhost:5000/api/topics"), // Correct endpoint
+            axios.get(`${API_BASE_URL}/api/parable-verses`),
+            axios.get(`${API_BASE_URL}/api/topics`),
         ]);
 
         // Organize parables
